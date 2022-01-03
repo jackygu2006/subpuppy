@@ -4,9 +4,20 @@
 ## 1. Install
 Run `npm i` or `yarn` command
 
-## 2. Database configuration
+## 2. Configuration
 
 Copy `ormconfig.json.sample` to `ormconfig.json`, configue mysql database.
+
+Establish a new `.env` file, and set the following content:
+```
+isHttps=0
+httpsPort=3040
+httpPort=3030
+wss=wss://mainnet.xxnet.io
+```
+If you want to change the API port, just change params above. If set isHttps=0, close the https api, if set 1, open the https api.
+
+If you want to use https api, you have to make a ssl files in the `./sslserver/`, `server.key` and `server.pem`.
 
 ## 3. Run
 Run `yarn start` command to get help as floowing:
@@ -84,7 +95,7 @@ pm2 start run_fetch.sh -n fetch10000~12000 -- 10000 11000 // same as yarn start 
 
 ### Run api
 ```
-pm2 start run_api.sh // same as: yarn start api -p 3030
+pm2 start run_api.sh // same as: yarn start api
 ```
 
 ### Log File
