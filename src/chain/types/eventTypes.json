@@ -1,0 +1,404 @@
+{
+  "eventTypes" : [
+    {
+      "type" : "0000",
+      "module" : "system",
+      "event" : "ExtrinsicSuccess"
+    },
+    {
+      "type" : "0001",
+      "module" : "system",
+      "event" : "ExtrinsicFailed"
+    },
+    {
+      "type" : "0003",
+      "module" : "system",
+      "event" : "NewAccount"
+    },
+    {
+      "type" : "0004",
+      "module" : "system",
+      "event" : "KilledAccount"
+    },
+    {
+      "type" : "0100",
+      "module" : "scheduler",
+      "event" : "Scheduled"
+    },
+    {
+      "type" : "0102",
+      "module" : "scheduler",
+      "event" : "Dispatched"
+    },
+    {
+      "type" : "0400",
+      "module" : "balances",
+      "event" : "Endowed"
+    },
+    {
+      "type" : "0401",
+      "module" : "balances",
+      "event" : "DustLost"
+    },
+    {
+      "type" : "0402",
+      "module" : "balances",
+      "event" : "Transfer"
+    },
+    {
+      "type" : "0404",
+      "module" : "balances",
+      "event" : "Deposit"
+    },
+    {
+      "type" : "0405",
+      "module" : "balances",
+      "event" : "Reserved"
+    },
+    {
+      "type" : "0406",
+      "module" : "balances",
+      "event" : "Unreserved"
+    },
+    {
+      "type" : "0600",
+      "module" : "staking",
+      "event" : "EraPayout"
+    },
+    {
+      "type" : "0601",
+      "module" : "staking",
+      "event" : "Reward"
+    },
+    {
+      "type" : "0602",
+      "module" : "staking",
+      "event" : "Slash"
+    },
+    {
+      "type" : "0604",
+      "module" : "staking",
+      "event" : "StakingElection"
+    },
+    {
+      "type" : "0605",
+      "module" : "staking",
+      "event" : "Bonded"
+    },
+    {
+      "type" : "0606",
+      "module" : "staking",
+      "event" : "Unbonded"
+    },
+    {
+      "type" : "0607",
+      "module" : "staking",
+      "event" : "Withdrawn"
+    },
+    {
+      "type" : "0608",
+      "module" : "staking",
+      "event" : "Kicked"
+    },
+    {
+      "type" : "0701",
+      "module" : "electionProviderMultiPhase",
+      "event" : "ElectionFinalized"
+    },
+    {
+      "type" : "0704",
+      "module" : "electionProviderMultiPhase",
+      "event" : "SignedPhaseStarted"
+    },
+    {
+      "type" : "0705",
+      "module" : "electionProviderMultiPhase",
+      "event" : "UnsignedPhaseStarted"
+    },
+    {
+      "type" : "0800",
+      "module" : "offences",
+      "event" : "Offence"
+    },
+    {
+      "type" : "0900",
+      "module" : "session",
+      "event" : "NewSession"
+    },
+    {
+      "type" : "0a00",
+      "module" : "grandpa",
+      "event" : "NewAuthorities"
+    },
+    {
+      "type" : "0b00",
+      "module" : "imOnline",
+      "event" : "HeartbeatReceived"
+    },
+    {
+      "type" : "0b01",
+      "module" : "imOnline",
+      "event" : "AllGood"
+    },
+    {
+      "type" : "0b02",
+      "module" : "imOnline",
+      "event" : "SomeOffline"
+    },
+    {
+      "type" : "0d00",
+      "module" : "democracy",
+      "event" : "Proposed"
+    },
+    {
+      "type" : "0d01",
+      "module" : "democracy",
+      "event" : "Tabled"
+    },
+    {
+      "type" : "0d03",
+      "module" : "democracy",
+      "event" : "Started"
+    },
+    {
+      "type" : "0d04",
+      "module" : "democracy",
+      "event" : "Passed"
+    },
+    {
+      "type" : "0d05",
+      "module" : "democracy",
+      "event" : "NotPassed"
+    },
+    {
+      "type" : "0d07",
+      "module" : "democracy",
+      "event" : "Executed"
+    },
+    {
+      "type" : "0d08",
+      "module" : "democracy",
+      "event" : "Delegated"
+    },
+    {
+      "type" : "0d09",
+      "module" : "democracy",
+      "event" : "Undelegated"
+    },
+    {
+      "type" : "0d0b",
+      "module" : "democracy",
+      "event" : "PreimageNoted"
+    },
+    {
+      "type" : "0d0c",
+      "module" : "democracy",
+      "event" : "PreimageUsed"
+    },
+    {
+      "type" : "0e00",
+      "module" : "council",
+      "event" : "Proposed"
+    },
+    {
+      "type" : "0e01",
+      "module" : "council",
+      "event" : "Voted"
+    },
+    {
+      "type" : "0e02",
+      "module" : "council",
+      "event" : "Approved"
+    },
+    {
+      "type" : "0e04",
+      "module" : "council",
+      "event" : "Executed"
+    },
+    {
+      "type" : "0e06",
+      "module" : "council",
+      "event" : "Closed"
+    },
+    {
+      "type" : "0f00",
+      "module" : "technicalCommittee",
+      "event" : "Proposed"
+    },
+    {
+      "type" : "0f01",
+      "module" : "technicalCommittee",
+      "event" : "Voted"
+    },
+    {
+      "type" : "0f02",
+      "module" : "technicalCommittee",
+      "event" : "Approved"
+    },
+    {
+      "type" : "0f03",
+      "module" : "technicalCommittee",
+      "event" : "Disapproved"
+    },
+    {
+      "type" : "0f04",
+      "module" : "technicalCommittee",
+      "event" : "Executed"
+    },
+    {
+      "type" : "0f06",
+      "module" : "technicalCommittee",
+      "event" : "Closed"
+    },
+    {
+      "type" : "1000",
+      "module" : "elections",
+      "event" : "NewTerm"
+    },
+    {
+      "type" : "1004",
+      "module" : "elections",
+      "event" : "Renounced"
+    },
+    {
+      "type" : "1005",
+      "module" : "elections",
+      "event" : "CandidateSlashed"
+    },
+    {
+      "type" : "1200",
+      "module" : "treasury",
+      "event" : "Proposed"
+    },
+    {
+      "type" : "1201",
+      "module" : "treasury",
+      "event" : "Spending"
+    },
+    {
+      "type" : "1204",
+      "module" : "treasury",
+      "event" : "Burnt"
+    },
+    {
+      "type" : "1205",
+      "module" : "treasury",
+      "event" : "Rollover"
+    },
+    {
+      "type" : "1206",
+      "module" : "treasury",
+      "event" : "Deposit"
+    },
+    {
+      "type" : "1300",
+      "module" : "claims",
+      "event" : "Claimed"
+    },
+    {
+      "type" : "1400",
+      "module" : "vesting",
+      "event" : "VestingUpdated"
+    },
+    {
+      "type" : "1401",
+      "module" : "vesting",
+      "event" : "VestingCompleted"
+    },
+    {
+      "type" : "1500",
+      "module" : "utility",
+      "event" : "BatchInterrupted"
+    },
+    {
+      "type" : "1501",
+      "module" : "utility",
+      "event" : "BatchCompleted"
+    },
+    {
+      "type" : "1502",
+      "module" : "utility",
+      "event" : "ItemCompleted"
+    },
+    {
+      "type" : "1600",
+      "module" : "identity",
+      "event" : "IdentitySet"
+    },
+    {
+      "type" : "1601",
+      "module" : "identity",
+      "event" : "IdentityCleared"
+    },
+    {
+      "type" : "1603",
+      "module" : "identity",
+      "event" : "JudgementRequested"
+    },
+    {
+      "type" : "1605",
+      "module" : "identity",
+      "event" : "JudgementGiven"
+    },
+    {
+      "type" : "1606",
+      "module" : "identity",
+      "event" : "RegistrarAdded"
+    },
+    {
+      "type" : "1700",
+      "module" : "proxy",
+      "event" : "ProxyExecuted"
+    },
+    {
+      "type" : "1a00",
+      "module" : "bounties",
+      "event" : "BountyProposed"
+    },
+    {
+      "type" : "1a02",
+      "module" : "bounties",
+      "event" : "BountyBecameActive"
+    },
+    {
+      "type" : "1e00",
+      "module" : "xxNetwork",
+      "event" : "RewardFromPool"
+    },
+    {
+      "type" : "1e06",
+      "module" : "xxNetwork",
+      "event" : "PayoutFromCustody"
+    },
+    {
+      "type" : "1e07",
+      "module" : "xxNetwork",
+      "event" : "PayoutFromReserve"
+    },
+    {
+      "type" : "1e08",
+      "module" : "xxNetwork",
+      "event" : "CustodyDone"
+    },
+    {
+      "type" : "1e0c",
+      "module" : "xxNetwork",
+      "event" : "CmixHashesUpdated"
+    },
+    {
+      "type" : "1e0f",
+      "module" : "xxNetwork",
+      "event" : "CmixVariablesUpdated"
+    },
+    {
+      "type" : "1e11",
+      "module" : "xxNetwork",
+      "event" : "CmixPointsAdded"
+    },
+    {
+      "type" : "1e12",
+      "module" : "xxNetwork",
+      "event" : "CmixPointsDeducted"
+    }
+  ]
+}

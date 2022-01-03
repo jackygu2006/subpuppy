@@ -1,0 +1,1 @@
+yarn start fetch -f $1 -t $2 $3
