@@ -1,1 +1,1 @@
-yarn start api -p 3030
+yarn start api
