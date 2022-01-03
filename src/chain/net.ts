@@ -131,7 +131,14 @@ export async function fetchEvents(blockHeight: number, blockHash: BlockHash): Pr
 }
 
 export async function getLastestHeight(): Promise<number> {
-  return parseInt((await api.query.system.number()).toString());
+  let height:any;
+  try {
+    height = await api.query.system.number();
+  } catch (err) {
+    await connect(); // Make sure the ApiPromise connection is alive
+    height = await api.query.system.number();
+  }
+  return parseInt(height.toString());
 }
 
 export async function getBlockTimestamp(): Promise<number> {

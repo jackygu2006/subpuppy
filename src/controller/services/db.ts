@@ -1,6 +1,6 @@
 import { BlockHash } from '@polkadot/types/interfaces';
 import { Connection, Repository } from 'typeorm';
-import { fetchBlocks, fetchEvents, fetchExtrinsics, getBlockHash } from '../../chain/net';
+import { fetchBlocks, fetchEvents, fetchExtrinsics, getBlockHash, connect } from '../../chain/net';
 import { ChainData, PointData, SubBlock, SubEvent, SubExtrinsic } from '../../chain/types/types';
 import { Blocks } from '../../entity/Blocks';
 import { Events } from '../../entity/Events';
@@ -25,7 +25,15 @@ export async function fetchChainData(conn: Connection, startBlockHeight: number,
 	for (let i = 0; i <= endBlockHeight - startBlockHeight; i++) {
 			const h: number = startBlockHeight + i;
 			if(await checkIfExists(conn, h) && !updateAllowed) continue;
-			const blockHash: BlockHash = await getBlockHash(h);
+			let blockHash: BlockHash = null;
+
+			try {
+				blockHash = await getBlockHash(h);
+			} catch (err) {
+				await connect(); // Make sure the ApiPromise is alive
+				blockHash = await getBlockHash(h);
+			}
+
 			const block: SubBlock = await fetchBlocks(h, blockHash);
 			if(block == null) continue;
 			const extrinsics: Array<SubExtrinsic> = await fetchExtrinsics(h, blockHash);
