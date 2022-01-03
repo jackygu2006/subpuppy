@@ -11,7 +11,6 @@ import { program } from "commander";
 import { exit } from "process";
 import { fetchChainData, getDBHeight } from "./controller/services/db";
 import { Blocks } from "./entity/Blocks";
-import { debug } from './config';
 import * as fs from 'fs';
 import * as http from 'http';
 import * as https from 'https';
@@ -182,6 +181,7 @@ function setCors(app) {
         'https://tool.xxnetwork.asia',
     ];
     const origin = function (origin, callback) {
+        if(origin === undefined) { callback(null, true); return;} // for postman call
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true)
         } else {

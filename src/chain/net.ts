@@ -1,25 +1,18 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { definitions } from './types/xxnetwork';
-
 import { AccountId, Block, BlockHash, BlockNumber, EraIndex, EraRewardPoints, EventRecord, RewardPoint, SignedBlock } from '@polkadot/types/interfaces';
 import { PointData, SubBlock, SubEvent, SubExtrinsic } from './types/types';
 import { BTreeMap, GenericExtrinsic, Option, Vec } from '@polkadot/types';
 import { AnyTuple } from '@polkadot/types/types';
-import { types } from '@acala-network/type-definitions';
 import { logger } from '../logger';
 import { Connection } from 'typeorm';
 import { saveValidatorPointDB } from '../controller/services/db';
-import { wss } from '../config';
-
 export let api: ApiPromise;
 
+require('dotenv').config()
+
 export async function connect() {
-  const provider = new WsProvider(wss);
-  api = await ApiPromise.create({
-    provider,
-    // types,
-    // types: definitions.types,
-  });
+  const provider = new WsProvider(process.env.wss);
+  api = await ApiPromise.create({ provider });
 }
 
 export async function test() {
