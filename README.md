@@ -56,9 +56,9 @@ yarn start fetch -l
 
 ### Start API service, set port 3000
 ```
-yarn start api -p 3000
+yarn start api
 ```
-Default port is `3000`
+Port for http/https is configed in .env file.
 
 ### Fetch and save validators' point data
 ```
@@ -66,6 +66,10 @@ yarn start points -i 1800
 ```
 Save point data every 1800 seconds.
 
+### Check how many blocks not synchronized
+```
+yarn start check -f 1 -t 100000
+```
 
 ## 5. Use pm2
 ### Fetch to the latest block

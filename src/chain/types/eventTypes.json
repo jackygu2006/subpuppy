@@ -61,6 +61,16 @@
       "event" : "Unreserved"
     },
     {
+      "type" : "0407",
+      "module" : "balances",
+      "event" : "Deposit"
+    },
+    {
+      "type" : "0408",
+      "module" : "balances",
+      "event" : "Withdraw"
+    },
+    {
       "type" : "0600",
       "module" : "staking",
       "event" : "EraPayout"
@@ -366,6 +376,11 @@
       "event" : "RewardFromPool"
     },
     {
+      "type" : "1e05",
+      "module" : "xxCmix",
+      "event" : "CmixPointsAdded"
+    },
+    {
       "type" : "1e06",
       "module" : "xxNetwork",
       "event" : "PayoutFromCustody"
@@ -399,6 +414,11 @@
       "type" : "1e12",
       "module" : "xxNetwork",
       "event" : "CmixPointsDeducted"
+    },
+    {
+      "type" : "2100",
+      "module" : "xxBetanetRewards",
+      "event" : "OptionSelected"
     }
   ]
 }

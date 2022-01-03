@@ -16,8 +16,8 @@ export let api: ApiPromise;
 export async function connect() {
   const provider = new WsProvider(wss);
   api = await ApiPromise.create({
-    provider: provider,
-    types,
+    provider,
+    // types,
     // types: definitions.types,
   });
 }

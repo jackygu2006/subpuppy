@@ -12,7 +12,11 @@ import { exit } from "process";
 import { fetchChainData, getDBHeight } from "./controller/services/db";
 import { Blocks } from "./entity/Blocks";
 import { debug } from './config';
+import * as fs from 'fs';
+import * as http from 'http';
+import * as https from 'https';
 const log = require('single-line-log').stdout;
+require('dotenv').config()
 
 let updateAllowed = false;
 let fetchingData = false;
@@ -32,7 +36,7 @@ let fetchingData = false;
 
 program
     .allowUnknownOption()
-    .version('0.1.5')
+    .version('0.2.0')
     .usage('subpuppy fetch [options] or subpuppy api [options]')
 
 program
@@ -96,7 +100,6 @@ program
 program
     .command('api [options]')
     .description('Run API service')
-    .option('-p --port <Port>', 'API port', '3030')
     .action((name, options, command) => {
         logger.info('Starting API...')
         // create express app
@@ -117,9 +120,28 @@ program
                     }
                 });
             });
+            const isHttps = parseInt(process.env.isHttps) === 1;
+            const httpsPort = parseInt(process.env.httpsPort);
+            const httpPort = parseInt(process.env.httpPort);
+            let credentials = null;
 
-            app.listen(parseInt(options.port));
-            logger.info(`Express server has started on port ${options.port}.`);
+            if(isHttps) {
+                const privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+                const certificate = fs.readFileSync('sslcert/server.pem', 'utf8');
+                credentials = {key: privateKey, cert: certificate};
+            }
+
+            if(isHttps) {
+                const httpsServer = https.createServer(credentials, app);
+                httpsServer.listen(httpsPort, function () {
+                  logger.info(`subpuppy api has started on https port ${httpsPort}.`);
+                })
+            }
+
+            const httpServer = http.createServer(app);
+            httpServer.listen(httpPort, function () {
+              logger.info(`subpuppy api has started on http port ${httpPort}.`);
+            })
         }).catch(error => console.log(error));
     })
 
@@ -153,14 +175,25 @@ program.parse(process.argv);
 
 function setCors(app) {
     const cors = require('cors');
+    const whitelist = [
+        'http://127.0.0.1:3000', 
+        'http://localhost:3000', 
+        'http://tool.xxnetwork.asia',
+        'https://tool.xxnetwork.asia',
+    ];
+    const origin = function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    };
     app.use(cors({
-        origin: !debug ? 'http://tool.xxnetwork.asia' : 'http://127.0.0.1:3000',
+        origin,
         maxAge: 5,
         credentials: true,
         allowMethods: ['GET', 'POST'],
         allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-        exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-        
-      })
-    )
+        exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],        
+    }))
 }
