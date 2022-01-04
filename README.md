@@ -98,6 +98,10 @@ pm2 start run_fetch.sh -n fetch10000~12000 -- 10000 11000 // same as yarn start 
 pm2 start run_api.sh // same as: yarn start api
 ```
 
+### Get points
+```
+pm2 start run_points.sh // same as: yarn start points
+```
 ### Log File
 located in `./info.log`
 
