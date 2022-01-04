@@ -91,8 +91,8 @@ program
 				console.log("saveValidatorPoint");
 				await saveValidatorPoint(connection);
 			}, parseInt(interval) * 1000);
+			await saveValidatorPoint(connection);
 		})
-
 	})
 
 
