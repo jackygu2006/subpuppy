@@ -135,8 +135,8 @@ export async function getLastestHeight(): Promise<number> {
   try {
     height = await api.query.system.number();
   } catch (err) {
-    await connect(); // Make sure the ApiPromise connection is alive
-    height = await api.query.system.number();
+    // await connect(); // Make sure the ApiPromise connection is alive
+    // height = await api.query.system.number();
   }
   return parseInt(height.toString());
 }

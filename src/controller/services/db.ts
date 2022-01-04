@@ -30,8 +30,8 @@ export async function fetchChainData(conn: Connection, startBlockHeight: number,
 			try {
 				blockHash = await getBlockHash(h);
 			} catch (err) {
-				await connect(); // Make sure the ApiPromise is alive
-				blockHash = await getBlockHash(h);
+				// await connect(); // Make sure the ApiPromise is alive
+				// blockHash = await getBlockHash(h);
 			}
 
 			const block: SubBlock = await fetchBlocks(h, blockHash);

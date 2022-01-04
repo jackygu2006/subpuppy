@@ -95,7 +95,6 @@ program
 		})
 	})
 
-
 program
 	.command('api [options]')
 	.description('Run API service')
