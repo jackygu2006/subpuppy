@@ -1,5 +1,5 @@
 #!/bin/bash
-res=$(curl -k -s  http://101.32.192.132:3030/api/scan/block_height)
+res=$(curl -k -s  https://tool.xxnetwork.asia:3040/api/scan/block_height)
 diff=$(echo ${res} | jq ".data.diff")
 num=10
 if [ $diff -gt $num ]
