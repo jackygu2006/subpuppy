@@ -180,6 +180,7 @@ function setCors(app) {
 		'https://tool.xxnetwork.asia',
 	];
 	const origin = function (origin, callback) {
+		console.log('origin: ' + origin);
 		if(origin === undefined) { callback(null, true); return;} // for postman call
 		if (whitelist.indexOf(origin) !== -1) {
 			callback(null, true)
