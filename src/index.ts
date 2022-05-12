@@ -180,8 +180,6 @@ function setCors(app) {
 		'https://tool.xxnetwork.asia',
 	];
 	const origin = function (origin, callback) {
-		console.log('origin: ' + origin);
-		console.log('origin is undefined', origin === undefined);
 		if(origin === undefined) { 
 			callback(null, true); 
 			return;
