@@ -181,8 +181,11 @@ function setCors(app) {
 	];
 	const origin = function (origin, callback) {
 		console.log('origin: ' + origin);
-		if(origin === undefined) { callback(null, true); return;} // for postman call
-		if (whitelist.indexOf(origin) !== -1) {
+		console.log('origin is undefined', origin === undefined);
+		if(origin === undefined) { 
+			callback(null, true); 
+			return;
+		} else if (whitelist.indexOf(origin) !== -1) {
 			callback(null, true)
 		} else {
 			callback(new Error('Not allowed by CORS'))
